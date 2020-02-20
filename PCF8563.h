@@ -4,6 +4,9 @@
 #include <stddef.h>
 #include "esp_system.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #define PCF8563_READ_ADDR               0xA3
 #define PCF8563_WRITE_ADDR              0xA2
@@ -61,4 +64,8 @@ int PCF_SetDateTime(PCF_DateTime *dateTime);
 int PCF_GetDateTime(PCF_DateTime *dateTime);
 int PCF_hctosys();
 int PCF_systohc();
+
+#ifdef __cplusplus
+}
+#endif
 
