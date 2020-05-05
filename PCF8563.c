@@ -23,7 +23,9 @@ esp_err_t PCF_Write(uint8_t addr, uint8_t *data, size_t count) {
 	esp_err_t ret = i2c_master_cmd_begin(I2C_NUM_0, cmd, 1000 / portTICK_PERIOD_MS);
     i2c_cmd_link_delete(cmd);
 	last_i2c_err = ret;
-	printf("last_i2c_err %d\n", last_i2c_err);
+	if(last_i2c_err) {
+		printf("last_i2c_err w:%d\n", last_i2c_err);
+	}
     return ret;
 }
 
@@ -41,7 +43,9 @@ esp_err_t PCF_Read(uint8_t addr, uint8_t *data, size_t count) {
 	esp_err_t ret = i2c_master_cmd_begin(I2C_NUM_0, cmd, 1000 / portTICK_PERIOD_MS);
     i2c_cmd_link_delete(cmd);
 	last_i2c_err = ret;
-	printf("last_i2c_err %d\n", last_i2c_err);
+	if(last_i2c_err) {
+		printf("last_i2c_err r:%d\n", last_i2c_err);
+	}
     return ret;
 }
 
